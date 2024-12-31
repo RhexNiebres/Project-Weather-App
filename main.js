@@ -18,7 +18,7 @@ async function fetchData() {
 
     const conditionKey = currentConditions.conditions.toLowerCase(); //add
     const imageResponse = await fetch(
-      `https://api.giphy.com/v1/gifs/translate?api_key=kjslOcjrBfTc6PDM4KhjjRSxBgfl7HkG&s=${conditionKey}`
+      // `https://api.giphy.com/v1/gifs/translate?api_key=kjslOcjrBfTc6PDM4KhjjRSxBgfl7HkG&s=${conditionKey}`
     );
 
     if (!imageResponse.ok) {
