@@ -8,6 +8,7 @@
     <title>Project: Weather App</title>
   </head>
   <body>
+    <div class="container">
     <h1>Project: Weather App</h1>
     <h2>Enter A Location of your choice</h2>
 
@@ -17,10 +18,12 @@
       id="locationName"
       required
       placeholder="Enter a Location..."
-    />
+    autocomplete="off"/>
     <button onclick="fetchData()">Check Weather</button>
-
+    <button id="toggleUnitButton" onclick="toggleUnits()">Switch to Celsius</button>
     <div id="display"></div>
+    </div>
+    
   </body>
 
   <script src="main.js"></script>
