@@ -1,3 +1,4 @@
+let useCelsius = false; // Starts in Fahrenheit by default
 async function fetchData() {
   try {
     const locationName = document
@@ -28,12 +29,21 @@ async function fetchData() {
 
     const display = document.getElementById("display");
 
+    let temp = currentConditions.temp; 
+        
+        if (useCelsius) {
+            temp = (temp - 32) * (5 / 9); // Convert to Celsius
+            temp = temp.toFixed(1); // Keep one decimal place
+        }
+
+        const unit = useCelsius ? '°C' : '°F';
+
     const weatherInfo = `
       <div class="weather-info">
        <div>
          <h3>Wheather in ${locationName}</h3>
-         <p><i class="fa-solid fa-cloud-sun"></i> ${currentConditions.conditions}</p>
-         <p><i class="fa-solid fa-temperature-half"></i> ${currentConditions.temp}</p>
+         <p><i class="fa-solid fa-cloud-sun"></i> ${currentConditions.conditions}</p> 
+         <p><i class="fa-solid fa-temperature-half"></i> ${temp} ${unit}</p>
          <p><i class="fa-solid fa-droplet"></i> ${currentConditions.humidity}</p>
        </div>
        <div>
@@ -47,4 +57,11 @@ async function fetchData() {
   } catch (error) {
     console.log(error);
   }
+}
+
+function toggleUnits() {
+    useCelsius = !useCelsius; // Toggle unit flag
+    const button = document.getElementById("toggleUnitButton");
+    button.textContent = useCelsius ? "Switch to Fahrenheit" : "Switch to Celsius"; // Update button text
+    fetchData(); // Fetch data again with updated unit
 }
